@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRuntimeContext } from 'vtex.render-runtime'
+import { useRuntime } from 'vtex.render-runtime'
 import {
   ThemeProvider,
   createSystem,
@@ -10,10 +10,9 @@ import {
 
 const system = createSystem('admin-ui-example-details')
 
-const AdminExampleDetail: React.FC<Props> = ({
-  params,
-  runtime: { navigate },
-}) => {
+const AdminExampleDetail: React.FC<Props> = ({ params }) => {
+  const { navigate } = useRuntime()
+
   return (
     <ThemeProvider system={system}>
       <PageHeader>
@@ -35,18 +34,8 @@ const AdminExampleDetail: React.FC<Props> = ({
   )
 }
 
-interface NavigateArgs {
-  page: string
-  params?: unknown
-}
-
-interface Runtime {
-  navigate: (args: NavigateArgs) => void
-}
-
 interface Props {
-  runtime: Runtime
   params: unknown
 }
 
-export default withRuntimeContext(AdminExampleDetail)
+export default AdminExampleDetail
