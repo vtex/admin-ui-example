@@ -10,7 +10,7 @@ import {
 
 const system = createSystem('admin-ui-example-details')
 
-const AdminExampleDetail: React.FC<Props> = ({ params }) => {
+function AdminExampleDetail({ params }: Props) {
   const { navigate } = useRuntime()
 
   return (

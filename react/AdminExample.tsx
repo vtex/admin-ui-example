@@ -10,7 +10,7 @@ import {
 
 const system = createSystem('admin-ui-example')
 
-const AdminExample: React.FC = () => {
+function AdminExample() {
   const { navigate } = useRuntime()
 
   return (
