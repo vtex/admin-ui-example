@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+.vscode/
+.env
+react/node_modules
+react/.DS_Store
+react/vendor/.DS_Store
+package-lock.json
