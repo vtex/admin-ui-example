@@ -5,7 +5,9 @@
     "jsx": "react",
     "lib": ["es2017", "dom"],
     "module": "esnext",
-    "strict": true
+    "strict": true,
+    "moduleResolution": "node",
+    "target": "es2017"
   },
   "include": ["./**/*"],
   "exclude": ["node_modules"]

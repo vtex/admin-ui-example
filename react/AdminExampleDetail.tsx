@@ -1,23 +1,17 @@
 import React from 'react'
 import { useRuntime } from 'vtex.render-runtime'
-import {
-  ThemeProvider,
-  createSystem,
-  PageHeader,
-  Card,
-  Button,
-} from '@vtex/admin-ui'
+import { createSystem, PageHeader, Card, Button } from '@vtex/admin-ui'
 
-const system = createSystem('admin-ui-example-details')
+const [ThemeProvider] = createSystem({
+  key: 'unique-key-in-kebab-case',
+})
 
 function AdminExampleDetail({ params }: Props) {
   const { navigate } = useRuntime()
 
   return (
-    <ThemeProvider system={system}>
-      <PageHeader>
-        <PageHeader.Title>Details page title</PageHeader.Title>
-      </PageHeader>
+    <ThemeProvider>
+      <PageHeader>asdsad</PageHeader>
 
       <Card>params: {JSON.stringify(params, null, 2)}</Card>
       <Button
