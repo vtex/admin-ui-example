@@ -1,37 +1,54 @@
 import React from 'react'
+import { useRuntime } from 'vtex.render-runtime'
 import {
+  ThemeProvider,
   createSystem,
-  Tabs,
-  Tab,
-  TabList,
-  TabPanel,
-  useTabState,
+  PageHeader,
+  List,
+  Button,
 } from '@vtex/admin-ui'
 
-import Make from './Make'
-import GetRequest from './GetRequest'
-
-const [ThemeProvider] = createSystem({
-  key: 'unique-key-in-kebab-case',
-})
+const system = createSystem('admin-ui-example')
 
 function AdminExample() {
-  const state = useTabState()
+  const { navigate } = useRuntime()
 
   return (
-    <ThemeProvider>
-      <Tabs state={state}>
-        <TabList aria-label="Usage Tabs">
-          <Tab id="1">Make Request</Tab>
-          <Tab id="2">Get Request</Tab>
-        </TabList>
-        <TabPanel id="1" csx={{ padding: 3 }}>
-          <Make />
-        </TabPanel>
-        <TabPanel id="2" csx={{ padding: 3 }}>
-          <GetRequest />
-        </TabPanel>
-      </Tabs>
+    <ThemeProvider system={system}>
+      <PageHeader>
+        <PageHeader.Title>An admin-ui powered example app</PageHeader.Title>
+      </PageHeader>
+
+      <List>
+        <List.Item>
+          Item #6745{' '}
+          <Button
+            size="small"
+            onClick={() => {
+              navigate({
+                page: 'admin.app.example-detail',
+                params: { id: 6745 },
+              })
+            }}
+          >
+            see details
+          </Button>
+        </List.Item>
+        <List.Item>
+          Item #1987{' '}
+          <Button
+            size="small"
+            onClick={() => {
+              navigate({
+                page: 'admin.app.example-detail',
+                params: { id: 1987 },
+              })
+            }}
+          >
+            see details
+          </Button>
+        </List.Item>
+      </List>
     </ThemeProvider>
   )
 }
