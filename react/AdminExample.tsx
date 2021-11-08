@@ -38,7 +38,7 @@ function AdminExample() {
 
       <List>
         <List.Item>
-          <FormattedMessage {...messages.itemId} values={{ refId: '123' }} />{' '}
+          <FormattedMessage {...messages.itemId} values={{ refId: '6745' }} />{' '}
           <Button
             size="small"
             onClick={() => {
@@ -52,7 +52,7 @@ function AdminExample() {
           </Button>
         </List.Item>
         <List.Item>
-          <FormattedMessage {...messages.itemId} values={{ refId: '456' }} />{' '}
+          <FormattedMessage {...messages.itemId} values={{ refId: '1987' }} />{' '}
           <Button
             size="small"
             onClick={() => {
