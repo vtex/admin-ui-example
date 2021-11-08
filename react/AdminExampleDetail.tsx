@@ -1,25 +1,47 @@
 import React from 'react'
 import { useRuntime } from 'vtex.render-runtime'
+import { defineMessages, FormattedMessage } from 'react-intl'
 import {
-  ThemeProvider,
   createSystem,
   PageHeader,
+  PageTitle,
   Card,
   Button,
 } from '@vtex/admin-ui'
 
-const system = createSystem('admin-ui-example-details')
+const [ThemeProvider] = createSystem({
+  key: 'admin-ui-example-details',
+})
+
+const messages = defineMessages({
+  title: {
+    id: 'admin/admin-example.details.title',
+  },
+  params: {
+    id: 'admin/admin-example.details.params',
+  },
+  back: {
+    id: 'admin/admin-example.details.back',
+  },
+})
 
 function AdminExampleDetail({ params }: Props) {
   const { navigate } = useRuntime()
 
   return (
-    <ThemeProvider system={system}>
+    <ThemeProvider>
       <PageHeader>
-        <PageHeader.Title>Details page title</PageHeader.Title>
+        <PageTitle>
+          <FormattedMessage {...messages.title} />
+        </PageTitle>
       </PageHeader>
 
-      <Card>params: {JSON.stringify(params, null, 2)}</Card>
+      <Card>
+        <h3>
+          <FormattedMessage {...messages.params} />
+        </h3>
+        <pre>{JSON.stringify(params, null, 2)}</pre>
+      </Card>
       <Button
         size="small"
         onClick={() => {
@@ -28,7 +50,7 @@ function AdminExampleDetail({ params }: Props) {
           })
         }}
       >
-        Back to main
+        <FormattedMessage {...messages.back} />
       </Button>
     </ThemeProvider>
   )

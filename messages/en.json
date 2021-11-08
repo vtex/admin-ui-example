@@ -1,4 +1,12 @@
 {
-  "admin-example.navigation.label-group": "Example admin-ui",
-  "admin-example.navigation.label-main": "Main page"
+  "admin-example.navigation.label-group": "Example Admin-ui",
+  "admin-example.navigation.label-main": "Main page",
+
+  "admin/admin-example.title": "An Admin-ui powered example app",
+  "admin/admin-example.buttonLabel": "see details",
+  "admin/admin-example.itemId": "item #{refId}",
+
+  "admin/admin-example.details.title": "Details page title",
+  "admin/admin-example.details.params": "Parameters:",
+  "admin/admin-example.details.back": "Back to main"
 }
