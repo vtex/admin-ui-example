@@ -1,27 +1,44 @@
 import React from 'react'
 import { useRuntime } from 'vtex.render-runtime'
+import { defineMessages, FormattedMessage } from 'react-intl'
 import {
-  ThemeProvider,
   createSystem,
   PageHeader,
+  PageTitle,
   List,
   Button,
 } from '@vtex/admin-ui'
 
-const system = createSystem('admin-ui-example')
+const [ThemeProvider] = createSystem({
+  key: 'unique-key-in-kebab-case',
+})
+
+const messages = defineMessages({
+  title: {
+    id: 'admin/admin-example.title',
+  },
+  buttonLabel: {
+    id: 'admin/admin-example.buttonLabel',
+  },
+  itemId: {
+    id: 'admin/admin-example.itemId',
+  },
+})
 
 function AdminExample() {
   const { navigate } = useRuntime()
 
   return (
-    <ThemeProvider system={system}>
+    <ThemeProvider>
       <PageHeader>
-        <PageHeader.Title>An admin-ui powered example app</PageHeader.Title>
+        <PageTitle>
+          <FormattedMessage {...messages.title} />
+        </PageTitle>
       </PageHeader>
 
       <List>
         <List.Item>
-          Item #6745{' '}
+          <FormattedMessage {...messages.itemId} values={{ refId: '123' }} />{' '}
           <Button
             size="small"
             onClick={() => {
@@ -31,11 +48,11 @@ function AdminExample() {
               })
             }}
           >
-            see details
+            <FormattedMessage {...messages.buttonLabel} />
           </Button>
         </List.Item>
         <List.Item>
-          Item #1987{' '}
+          <FormattedMessage {...messages.itemId} values={{ refId: '456' }} />{' '}
           <Button
             size="small"
             onClick={() => {
@@ -45,7 +62,7 @@ function AdminExample() {
               })
             }}
           >
-            see details
+            <FormattedMessage {...messages.buttonLabel} />
           </Button>
         </List.Item>
       </List>
