@@ -10,7 +10,7 @@ import {
 } from '@vtex/admin-ui'
 
 const [ThemeProvider] = createSystem({
-  key: 'unique-key-in-kebab-case',
+  key: 'admin-ui-example-details',
 })
 
 const messages = defineMessages({
