@@ -2,6 +2,7 @@
   "name": "vtex.admin-ui-example",
   "version": "0.0.11",
   "devDependencies": {
+    "@types/faker": "^5.5.9",
     "@types/node": "^11.12.1",
     "@types/react": "^16.8.10",
     "@vtex/tsconfig": "^0.4.4",
@@ -11,6 +12,7 @@
   },
   "dependencies": {
     "@vtex/admin-ui": "^0.114.3",
+    "faker": "^5.5.3",
     "react-intl": "^5.21.0"
   }
 }
