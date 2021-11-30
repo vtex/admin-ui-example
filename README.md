@@ -6,7 +6,7 @@
 
 ---
 
-VTEX IO based admin app example with the [admin-ui design system](https://admin-ui-docs.vercel.app/).
+VTEX IO based admin app example with the [admin-ui design system](https://admin-ui.vercel.app/).
 
 Live demo on [adminuiexample--teamadmin.myvtex.com/admin/example](https://adminuiexample--teamadmin.myvtex.com/admin/example/)
 
