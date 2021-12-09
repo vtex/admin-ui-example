@@ -3,12 +3,13 @@
   "admin-example.navigation.label-main": "Página principal",
 
   "admin/admin-example.title": "Um aplicativo de exemplo com o Admin-ui",
-  "admin/admin-example.buttonLabel": "see details",
   "admin/admin-example.itemId": "item #{refId}",
 
-  "admin/admin-example.details.title": "Details page title",
+  "admin/admin-example.details.title": "Detalhes do produto: #{id}",
   "admin/admin-example.details.params": "Parâmetros:",
-  "admin/admin-example.details.back": "Voltar",
+  "admin/admin-example.details.return": "Voltar",
+  "admin/admin-example.details.save": "Salvar",
+  "admin/admin-example.details.confirmMessage": "Seu produto foi atualizado com sucesso!",
 
   "admin/admin-example.create.modalTrigger": "Criar",
   "admin/admin-example.create.modalHeader": "Adicione um produto",

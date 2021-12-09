@@ -3,34 +3,24 @@ import { useRuntime } from 'vtex.render-runtime'
 import { defineMessages, FormattedMessage } from 'react-intl'
 import {
   createSystem,
-  PageHeader,
-  PageTitle,
   DataGrid,
-  useDataGridState,
-  PageActions,
   DataView,
   DataViewControls,
-  Search,
-  useDataViewState,
-  useSearchState,
-  usePaginationState,
   FlexSpacer,
+  PageActions,
+  PageHeader,
+  PageTitle,
   Pagination,
+  Search,
   ToastProvider,
+  useDataGridState,
+  useDataViewState,
+  usePaginationState,
+  useSearchState,
 } from '@vtex/admin-ui'
 import faker from 'faker'
 
 import ProductCreation from './ProductCreation'
-
-interface Item {
-  id: number
-  inStock: number
-  lastSale: string
-  price: string
-  productName: string
-  productAdjective: string
-  skus: number
-}
 
 const NUMBER_OF_ITEMS = 45
 const ITEMS_PER_PAGE = 10
@@ -42,9 +32,6 @@ const [ThemeProvider] = createSystem({
 const messages = defineMessages({
   title: {
     id: 'admin/admin-example.title',
-  },
-  buttonLabel: {
-    id: 'admin/admin-example.buttonLabel',
   },
   itemId: {
     id: 'admin/admin-example.itemId',
@@ -132,7 +119,7 @@ function AdminExample() {
     onRowClick: (el: Item) => {
       navigate({
         page: 'admin.app.example-detail',
-        params: { ...el },
+        params: { id: el.id },
       })
     },
   })
@@ -169,6 +156,16 @@ function AdminExample() {
       </ToastProvider>
     </ThemeProvider>
   )
+}
+
+interface Item {
+  id: number
+  inStock: number
+  lastSale: string
+  price: string
+  productName: string
+  productAdjective: string
+  skus: number
 }
 
 export default AdminExample

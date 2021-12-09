@@ -2,12 +2,23 @@ import React from 'react'
 import { useRuntime } from 'vtex.render-runtime'
 import { defineMessages, FormattedMessage } from 'react-intl'
 import {
+  ToastProvider,
+  Card,
+  Checkbox,
   createSystem,
+  Dropdown,
+  Flex,
+  Input,
   PageHeader,
   PageTitle,
-  Card,
-  Button,
+  useCheckboxState,
+  useDropdownState,
+  FlexSpacer,
+  Text,
+  Label,
 } from '@vtex/admin-ui'
+
+import DetailsFooter from './DetailsFooter'
 
 const [ThemeProvider] = createSystem({
   key: 'admin-ui-example-details',
@@ -20,44 +31,207 @@ const messages = defineMessages({
   params: {
     id: 'admin/admin-example.details.params',
   },
-  back: {
-    id: 'admin/admin-example.details.back',
-  },
 })
 
-function AdminExampleDetail({ params }: Props) {
+const cardStyles = { marginBottom: '2rem' }
+const propContainerStyles = { marginBottom: '1.4rem' }
+
+function AdminExampleDetail({ params: { id } }: Props) {
+  // ------
+  // Pull the navigation function from the runtime
   const { navigate } = useRuntime()
+
+  // ------
+  // Dropdowns config
+  const recipes = ['Latte', 'Espresso', 'Irish Coffee']
+  const recipesState = useDropdownState({
+    items: recipes,
+    initialSelectedItem: 'Chemex',
+  })
+
+  const units = ['un', 'kg', 'g', 'mg', 'm', 'm²', 'm³', 'cm', 'cm²', 'cm³']
+  const unitsState = useDropdownState({
+    items: units,
+    initialSelectedItem: 'un',
+  })
+
+  // ------
+  // Checkbox config
+  const state = useCheckboxState({ state: false })
+
+  // ------
+  // Input config
+  const [value, setValue] = React.useState('')
+  const [eanupc, setEanupc] = React.useState('')
 
   return (
     <ThemeProvider>
-      <PageHeader>
-        <PageTitle>
-          <FormattedMessage {...messages.title} />
-        </PageTitle>
-      </PageHeader>
+      <ToastProvider>
+        <Flex
+          direction="column"
+          justify="center"
+          style={{ backgroundColor: 'rgb(248, 249, 250)' }}
+        >
+          <PageHeader
+            onPopNavigation={() =>
+              navigate({
+                page: 'admin.app.example',
+              })
+            }
+          >
+            <PageTitle>
+              <FormattedMessage {...messages.title} values={{ id }} />
+            </PageTitle>
+          </PageHeader>
 
-      <Card>
-        <h3>
-          <FormattedMessage {...messages.params} />
-        </h3>
-        <pre>{JSON.stringify(params, null, 2)}</pre>
-      </Card>
-      <Button
-        size="small"
-        onClick={() => {
-          navigate({
-            page: 'admin.app.example',
-          })
-        }}
-      >
-        <FormattedMessage {...messages.back} />
-      </Button>
+          <Flex justify="center">
+            <div
+              style={{
+                padding: '4rem',
+                maxWidth: '900px',
+                width: '100%',
+              }}
+            >
+              <Card style={cardStyles}>
+                <Flex style={propContainerStyles}>
+                  <Text>Name</Text>
+                  <FlexSpacer />
+                  <Text>TALK CADEIRA</Text>
+                </Flex>
+                <Flex style={propContainerStyles}>
+                  <Text>Reference Code</Text>
+                  <FlexSpacer />
+                  <Text>1397</Text>
+                </Flex>
+                <Flex>
+                  <Text>EAN/UPC</Text>
+                  <FlexSpacer />
+                  <Input
+                    id="EANUPC"
+                    label="EAN/UPC"
+                    value={eanupc}
+                    onChange={(e) => setEanupc(e.target.value)}
+                  />
+                </Flex>
+              </Card>
+
+              <Card style={cardStyles}>
+                <Flex style={propContainerStyles}>
+                  <Text>Shipment weight*:</Text>
+                  <FlexSpacer />
+                  <Text>5,62</Text>
+                </Flex>
+                <Flex style={propContainerStyles}>
+                  <Text>Shipment height*:</Text>
+                  <FlexSpacer />
+                  <Text>81,00</Text>
+                </Flex>
+                <Flex style={propContainerStyles}>
+                  <Text>Shipment width*:</Text>
+                  <FlexSpacer />
+                  <Text>52,00</Text>
+                </Flex>
+                <Flex style={propContainerStyles}>
+                  <Text>Shipment length*:</Text>
+                  <FlexSpacer />
+                  <Text>50,00</Text>
+                </Flex>
+                <Flex style={propContainerStyles}>
+                  <Text>Real weight: </Text>
+                  <FlexSpacer />
+                  <Text>5,62</Text>
+                </Flex>
+                <Flex style={propContainerStyles}>
+                  <Text>Real height: </Text>
+                  <FlexSpacer />
+                  <Text>81,00</Text>
+                </Flex>
+                <Flex style={propContainerStyles}>
+                  <Text>Real width: </Text>
+                  <FlexSpacer />
+                  <Text>52,00</Text>
+                </Flex>
+                <Flex>
+                  <Text>Real length: </Text>
+                  <FlexSpacer />
+                  <Text>50,00</Text>
+                </Flex>
+              </Card>
+
+              <Card style={cardStyles}>
+                <Flex style={propContainerStyles}>
+                  <Text>Commercial Condition Code:</Text>
+                  <FlexSpacer />
+                  <Dropdown
+                    variant="tertiary"
+                    items={recipes}
+                    state={recipesState}
+                    label="Recipes"
+                  />
+                </Flex>
+
+                <Flex style={propContainerStyles}>
+                  <Text>Measurement Unit</Text>
+                  <FlexSpacer />
+                  <Dropdown
+                    variant="tertiary"
+                    items={units}
+                    state={unitsState}
+                    label="Recipes"
+                  />
+                </Flex>
+
+                <Flex style={propContainerStyles}>
+                  <Label csx={{ width: '100%' }}>
+                    <Flex>
+                      <span>Activate SKU if possible?</span>
+                      <FlexSpacer />
+                      <Checkbox aria-label="activate sku?" state={state} />
+                    </Flex>
+                  </Label>
+                </Flex>
+
+                <Flex style={propContainerStyles}>
+                  <Label csx={{ width: '100%' }}>
+                    <Flex>
+                      <span>SKU Activated?</span>
+                      <FlexSpacer />
+                      <Checkbox
+                        aria-label="sku activated?"
+                        state={{ state: true }}
+                        disabled
+                      />
+                    </Flex>
+                  </Label>
+                </Flex>
+
+                <Flex>
+                  <Text>Manufacturer Code</Text>
+                  <FlexSpacer />
+                  <Input
+                    id="manufacturerCode"
+                    label="Meaningful label"
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                  />
+                </Flex>
+              </Card>
+
+              <DetailsFooter />
+            </div>
+          </Flex>
+        </Flex>
+      </ToastProvider>
     </ThemeProvider>
   )
 }
 
 interface Props {
-  params: unknown
+  params: ProductParams
+}
+
+interface ProductParams {
+  id: string
 }
 
 export default AdminExampleDetail
