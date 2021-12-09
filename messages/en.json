@@ -8,5 +8,14 @@
 
   "admin/admin-example.details.title": "Details page title",
   "admin/admin-example.details.params": "Parameters:",
-  "admin/admin-example.details.back": "Back to main"
+  "admin/admin-example.details.back": "Back to main",
+
+  "admin/admin-example.create.modalTrigger": "Create",
+  "admin/admin-example.create.modalHeader": "Add a product",
+  "admin/admin-example.create.productName": "Product name",
+  "admin/admin-example.create.adjective": "Adjective",
+  "admin/admin-example.create.price": "Price",
+  "admin/admin-example.create.cancel": "Cancel",
+  "admin/admin-example.create.confirm": "Confirm",
+  "admin/admin-example.create.confirmMessage": "Your product was successfully sent!"
 }

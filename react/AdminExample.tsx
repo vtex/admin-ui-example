@@ -8,7 +8,6 @@ import {
   DataGrid,
   useDataGridState,
   PageActions,
-  Button,
   DataView,
   DataViewControls,
   Search,
@@ -17,8 +16,11 @@ import {
   usePaginationState,
   FlexSpacer,
   Pagination,
+  ToastProvider,
 } from '@vtex/admin-ui'
 import faker from 'faker'
+
+import ProductCreation from './ProductCreation'
 
 interface Item {
   id: number
@@ -49,6 +51,8 @@ const messages = defineMessages({
   },
 })
 
+// ------
+// Create fake data into an array with Faker
 const items = Array(NUMBER_OF_ITEMS)
   .fill(NUMBER_OF_ITEMS)
   .map(() => {
@@ -64,8 +68,12 @@ const items = Array(NUMBER_OF_ITEMS)
   })
 
 function AdminExample() {
+  // ------
+  // Pull the navigation function from the runtime
   const { navigate } = useRuntime()
 
+  // ------
+  // Datagrid config
   const view = useDataViewState()
   const search = useSearchState()
   const pagination = usePaginationState({
@@ -131,33 +139,34 @@ function AdminExample() {
 
   return (
     <ThemeProvider>
-      <PageHeader>
-        <PageTitle>
-          <FormattedMessage {...messages.title} />
-        </PageTitle>
+      <ToastProvider>
+        <PageHeader>
+          <PageTitle>
+            <FormattedMessage {...messages.title} />
+          </PageTitle>
 
-        <PageActions>
-          <Button variant="secondary">Edit</Button>
-          <Button>Create</Button>
-        </PageActions>
-      </PageHeader>
+          <PageActions>
+            <ProductCreation />
+          </PageActions>
+        </PageHeader>
 
-      <div style={{ padding: '0 4rem' }}>
-        <DataView state={view}>
-          <DataViewControls>
-            <Search id="search" placeholder="Search" state={search} />
-            <FlexSpacer />
-            <Pagination
-              state={pagination}
-              preposition="of"
-              subject="results"
-              prevLabel="Previous"
-              nextLabel="Next"
-            />
-          </DataViewControls>
-          <DataGrid state={grid} />
-        </DataView>
-      </div>
+        <div style={{ padding: '0 4rem' }}>
+          <DataView state={view}>
+            <DataViewControls>
+              <Search id="search" placeholder="Search" state={search} />
+              <FlexSpacer />
+              <Pagination
+                state={pagination}
+                preposition="of"
+                subject="results"
+                prevLabel="Previous"
+                nextLabel="Next"
+              />
+            </DataViewControls>
+            <DataGrid state={grid} />
+          </DataView>
+        </div>
+      </ToastProvider>
     </ThemeProvider>
   )
 }
