@@ -37,7 +37,7 @@ function DetailsFooter() {
         <FormattedMessage {...messages.return} />
       </Button>
       <Button
-        style={{ marginLeft: '1rem' }}
+        csx={{ marginLeft: '1rem' }}
         onClick={() =>
           showToast({
             tone: 'positive',
