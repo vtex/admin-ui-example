@@ -40,7 +40,7 @@ function DetailsFooter() {
         style={{ marginLeft: '1rem' }}
         onClick={() =>
           showToast({
-            type: 'success',
+            tone: 'positive',
             message: formatMessage(messages.confirmMessage),
             dismissible: true,
           })
