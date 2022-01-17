@@ -6,7 +6,13 @@ import {
   DataGrid,
   DataView,
   DataViewControls,
+  Flex,
   FlexSpacer,
+  IconArrowDown,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   PageActions,
   PageHeader,
   PageTitle,
@@ -15,6 +21,7 @@ import {
   ToastProvider,
   useDataGridState,
   useDataViewState,
+  useMenuState,
   usePaginationState,
   useSearchState,
 } from '@vtex/admin-ui'
@@ -35,6 +42,12 @@ const messages = defineMessages({
   },
   itemId: {
     id: 'admin/admin-example.itemId',
+  },
+  itemAction: {
+    id: 'admin/admin-example.item.action',
+  },
+  itemDangerousAction: {
+    id: 'admin/admin-example.item.dangerousAction',
   },
 })
 
@@ -111,6 +124,38 @@ function AdminExample() {
           type: 'currency',
           locale: 'en-US',
           currency: 'USD',
+        },
+      },
+      {
+        id: 'menu',
+        resolver: {
+          type: 'root',
+          render: function Render(_props) {
+            const state = useMenuState({})
+
+            return (
+              <Menu
+                state={state}
+                onClick={(
+                  event: React.MouseEvent<HTMLDivElement, MouseEvent>
+                ) => event.stopPropagation()}
+              >
+                <MenuButton
+                  display="actions"
+                  variant="adaptative-dark"
+                  aria-label="Necessary aria-label"
+                />
+                <MenuList>
+                  <MenuItem onClick={() => state.toggle()}>
+                    <FormattedMessage {...messages.itemAction} />
+                  </MenuItem>
+                  <MenuItem tone="critical" onClick={() => state.toggle()}>
+                    <FormattedMessage {...messages.itemDangerousAction} />
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            )
+          },
         },
       },
     ],
