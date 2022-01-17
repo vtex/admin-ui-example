@@ -112,6 +112,18 @@ function AdminExample() {
       {
         id: 'inStock',
         header: 'In Stock',
+        resolver: {
+          type: 'root',
+          render: function Render({ item }) {
+            const isLow = item.inStock < 200
+
+            return (
+              <Flex>
+                {item.inStock} {isLow && <IconArrowDown />}
+              </Flex>
+            )
+          },
+        },
       },
       {
         id: 'skus',
