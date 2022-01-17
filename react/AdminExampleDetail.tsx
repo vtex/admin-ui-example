@@ -67,11 +67,7 @@ function AdminExampleDetail({ params: { id } }: Props) {
   return (
     <ThemeProvider>
       <ToastProvider>
-        <Flex
-          direction="column"
-          justify="center"
-          csx={{ backgroundColor: 'rgb(248, 249, 250)' }}
-        >
+        <Flex direction="column" justify="center" csx={{ bg: '$secondary' }}>
           <PageHeader
             onPopNavigation={() =>
               navigate({
