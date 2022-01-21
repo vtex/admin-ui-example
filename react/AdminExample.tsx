@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRuntime } from 'vtex.render-runtime'
-import { defineMessages, FormattedMessage } from 'react-intl'
+import { defineMessages, FormattedMessage, useIntl } from 'react-intl'
 import {
   createSystem,
   DataGrid,
@@ -46,6 +46,9 @@ const messages = defineMessages({
   itemAction: {
     id: 'admin/admin-example.item.action',
   },
+  itemActionAriaLabel: {
+    id: 'admin/admin-example.item.actions.ariaLabel',
+  },
   itemDangerousAction: {
     id: 'admin/admin-example.item.dangerousAction',
   },
@@ -71,6 +74,10 @@ function AdminExample() {
   // ------
   // Pull the navigation function from the runtime
   const { navigate } = useRuntime()
+
+  // ------
+  // React Intl to retrieve direct strings
+  const { formatMessage } = useIntl()
 
   // ------
   // Datagrid config
@@ -155,7 +162,7 @@ function AdminExample() {
                 <MenuButton
                   display="actions"
                   variant="adaptative-dark"
-                  aria-label="Necessary aria-label"
+                  aria-label={formatMessage(messages.itemActionAriaLabel)}
                 />
                 <MenuList>
                   <MenuItem onClick={() => state.toggle()}>

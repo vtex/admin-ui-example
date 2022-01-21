@@ -4,6 +4,7 @@
 
   "admin/admin-example.title": "An Admin-ui powered example app",
   "admin/admin-example.itemId": "item #{refId}",
+  "admin/admin-example.item.actions.ariaLabel": "Table row actions",
   "admin/admin-example.item.action": "Perform action",
   "admin/admin-example.item.dangerousAction": "Perform dangerous action",
 
