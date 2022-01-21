@@ -1,12 +1,18 @@
 import React from 'react'
 import { useRuntime } from 'vtex.render-runtime'
-import { defineMessages, FormattedMessage } from 'react-intl'
+import { defineMessages, FormattedMessage, useIntl } from 'react-intl'
 import {
   createSystem,
   DataGrid,
   DataView,
   DataViewControls,
+  Flex,
   FlexSpacer,
+  IconArrowDown,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   PageActions,
   PageHeader,
   PageTitle,
@@ -15,6 +21,7 @@ import {
   ToastProvider,
   useDataGridState,
   useDataViewState,
+  useMenuState,
   usePaginationState,
   useSearchState,
 } from '@vtex/admin-ui'
@@ -35,6 +42,15 @@ const messages = defineMessages({
   },
   itemId: {
     id: 'admin/admin-example.itemId',
+  },
+  itemAction: {
+    id: 'admin/admin-example.item.action',
+  },
+  itemActionAriaLabel: {
+    id: 'admin/admin-example.item.actions.ariaLabel',
+  },
+  itemDangerousAction: {
+    id: 'admin/admin-example.item.dangerousAction',
   },
 })
 
@@ -58,6 +74,10 @@ function AdminExample() {
   // ------
   // Pull the navigation function from the runtime
   const { navigate } = useRuntime()
+
+  // ------
+  // React Intl to retrieve direct strings
+  const { formatMessage } = useIntl()
 
   // ------
   // Datagrid config
@@ -99,6 +119,18 @@ function AdminExample() {
       {
         id: 'inStock',
         header: 'In Stock',
+        resolver: {
+          type: 'root',
+          render: function Render({ item }) {
+            const isLow = item.inStock < 200
+
+            return (
+              <Flex>
+                {item.inStock} {isLow && <IconArrowDown />}
+              </Flex>
+            )
+          },
+        },
       },
       {
         id: 'skus',
@@ -111,6 +143,38 @@ function AdminExample() {
           type: 'currency',
           locale: 'en-US',
           currency: 'USD',
+        },
+      },
+      {
+        id: 'menu',
+        resolver: {
+          type: 'root',
+          render: function Render(_props) {
+            const state = useMenuState({})
+
+            return (
+              <Menu
+                state={state}
+                onClick={(
+                  event: React.MouseEvent<HTMLDivElement, MouseEvent>
+                ) => event.stopPropagation()}
+              >
+                <MenuButton
+                  display="actions"
+                  variant="adaptative-dark"
+                  aria-label={formatMessage(messages.itemActionAriaLabel)}
+                />
+                <MenuList>
+                  <MenuItem onClick={() => state.toggle()}>
+                    <FormattedMessage {...messages.itemAction} />
+                  </MenuItem>
+                  <MenuItem tone="critical" onClick={() => state.toggle()}>
+                    <FormattedMessage {...messages.itemDangerousAction} />
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            )
+          },
         },
       },
     ],

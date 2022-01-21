@@ -296,17 +296,17 @@
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
   integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
 
-"@vtex/admin-illustrations@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@vtex/admin-illustrations/-/admin-illustrations-0.1.2.tgz#811835fc38f0e419eb1bd05528ef7b26f5b8df2d"
-  integrity sha512-ObzFbOh3Gn3919Z/OsZ3Y4LsA5/IUjYQdvFmlL6IKs4+x5VOtnBUV1nm/o+TN5A7k4MfeKCWvFuZk89VBnpJHA==
+"@vtex/admin-illustrations@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@vtex/admin-illustrations/-/admin-illustrations-0.1.3.tgz#f482ebdc7e4f0d27142cfb96f4eadcd456dfd94c"
+  integrity sha512-bsxGFgONB1488StQz4AaAvoO2AK9wNVhszGv4RWnKY2VMGByjMreBK3mrlfRDKybfE2ZlsxI1HhR4NhtPg4anA==
 
-"@vtex/admin-ui-core@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@vtex/admin-ui-core/-/admin-ui-core-0.2.0.tgz#4a7b72d0a73e20ecf2b8e8bfb66c74ec7aa2c2a7"
-  integrity sha512-t/m0IrMT3xFB745zO0PCpRR6HctvllOJUp8HfFwYgee9oL2d4/1M6p/W7bvquyJoy9etBt1g7YenL46aJkFMwQ==
+"@vtex/admin-ui-core@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@vtex/admin-ui-core/-/admin-ui-core-0.4.0.tgz#289627d00636ef39e27c38122687238e8f3dda2e"
+  integrity sha512-E8Waib3aRJq4/Yd2d4Sf+AaQUiDfKjjPx2c2r4EEdngfzrRwxLEnhK8APCZL6I9r2O7A79cF07DXdvEuRoOOUQ==
   dependencies:
-    "@vtex/admin-ui-util" "^0.1.1"
+    "@vtex/admin-ui-util" "^0.1.2"
     csstype "^3.0.5"
     deepmerge "^4.2.2"
     focus-visible "^5.1.0"
@@ -314,55 +314,48 @@
     tiny-invariant "^1.1.0"
     tiny-warning "^1.0.3"
 
-"@vtex/admin-ui-hooks@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@vtex/admin-ui-hooks/-/admin-ui-hooks-0.1.2.tgz#6011322c888b4abd2f89207d49779f9d2a8ef987"
-  integrity sha512-aT071MYZqDi07yiv1T7eXGCeu0POAKT3kODrc60cjA7wYYncxGU3Xt0tqstsI4FutQB15aBWToQMcz3uSTltkg==
+"@vtex/admin-ui-hooks@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@vtex/admin-ui-hooks/-/admin-ui-hooks-0.1.3.tgz#f3fd99a623dd6eaf4f33a894504b579edbf17a06"
+  integrity sha512-w/g1qJoX3UaS8HBAiTqaHfKE4GtIpqEUCnG8A4xDeEJvzPu7TWrmffqOWRmsAIMzX8OijDkpHBcp3nAX63L9wQ==
   dependencies:
-    "@vtex/admin-ui-util" "^0.1.1"
+    "@vtex/admin-ui-util" "^0.1.2"
     use-debounce "^7.0.0"
 
-"@vtex/admin-ui-icons@^0.13.3":
-  version "0.13.3"
-  resolved "https://registry.yarnpkg.com/@vtex/admin-ui-icons/-/admin-ui-icons-0.13.3.tgz#2e6723896e9911b5ad00711d681037a67987117f"
-  integrity sha512-H4kUZZDO99PugODOwmgRTg/tt/fp+DsJEaXsELRKEUMOLdT8fuDniwl9Y2tA9lIqxU5qZS5yCWz5epoxXN+6KA==
-  dependencies:
-    "@vtex/admin-ui-core" "^0.2.0"
-
-"@vtex/admin-ui-react@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@vtex/admin-ui-react/-/admin-ui-react-0.2.3.tgz#1b3a124e5f535bfce63ef9515b6b5cfa24f7e637"
-  integrity sha512-Vm/heCvNZiskCEAIMzxkn6oOd+BNYcgUnlHwG+NZeowk9LO7shC3SsYEmzmNyNdE4dAZrcF0iDXb5T4BZ7IW1Q==
+"@vtex/admin-ui-react@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@vtex/admin-ui-react/-/admin-ui-react-0.4.1.tgz#5becbd4fbe97a66609f7ce7ce4329bd2c8c2804c"
+  integrity sha512-sFFZf2KMLLShCfFeVzLomDJEbMh5aD8SQW5TNxA+Cp1Li37Kvqydn96ZhYX6Nh4TxgIF8yodFYcQQTSgxpcJ5Q==
   dependencies:
     "@emotion/is-prop-valid" "^1.1.0"
-    "@vtex/admin-ui-util" "^0.1.1"
+    "@vtex/admin-ui-util" "^0.1.2"
     react-is "^17.0.2"
     tiny-invariant "^1.1.0"
     tiny-warning "^1.0.3"
 
-"@vtex/admin-ui-util@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@vtex/admin-ui-util/-/admin-ui-util-0.1.1.tgz#a9c9d13b7374dc38b93a496eaddec06144385553"
-  integrity sha512-OHDXP9F49nstJTddXVoXYznXK+v7RXc2AKCr9EtkjOyLVtxxQU/jZpFuQHBKNEhSx0IXXpeEmo44utIk/UHhlw==
+"@vtex/admin-ui-util@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@vtex/admin-ui-util/-/admin-ui-util-0.1.2.tgz#dd46b3778add42230ceb143e938fd6ec39a96032"
+  integrity sha512-+7+R/Mn8nLzlIOcf7lLG5dvwSOd/aTVT+vx0jLhF6OMyyrVFictut/6ljNiSpOsh4CpznlLP7buj3ozybkRkDA==
   dependencies:
     lodash.get "^4.4.2"
     lodash.merge "^4.6.2"
     lodash.omit "^4.5.0"
     lodash.pick "^4.4.0"
 
-"@vtex/admin-ui@^0.114.3":
-  version "0.114.3"
-  resolved "https://registry.yarnpkg.com/@vtex/admin-ui/-/admin-ui-0.114.3.tgz#6ee50c32bf0825477b9106ee4d8084ec816d7834"
-  integrity sha512-8AOljoUCKTzSz1GcsICT8You1EivK7G7iHIKP0ITwaCitLttSw3wOZWfLiEJtv6UWsdI89PZt8OVh5sYDTeNog==
+"@vtex/admin-ui@^0.117.0":
+  version "0.117.0"
+  resolved "https://registry.yarnpkg.com/@vtex/admin-ui/-/admin-ui-0.117.0.tgz#e9fadb1aea436f656e4badf37828ec16ff97a454"
+  integrity sha512-W9E03i24jplSvHR656z7udH/yKcAYPz8HJnslWzGusDkOx+CbytOMC7BNKUEhyjZSfd/7WpTHf/fq+e1RoaHjg==
   dependencies:
     "@emotion/babel-plugin" "^11.2.0"
     "@emotion/css" "^11.1.3"
     "@emotion/react" "^11.1.5"
-    "@vtex/admin-illustrations" "^0.1.2"
-    "@vtex/admin-ui-core" "^0.2.0"
-    "@vtex/admin-ui-hooks" "^0.1.2"
-    "@vtex/admin-ui-icons" "^0.13.3"
-    "@vtex/admin-ui-react" "^0.2.3"
+    "@vtex/admin-illustrations" "^0.1.3"
+    "@vtex/admin-ui-core" "^0.4.0"
+    "@vtex/admin-ui-hooks" "^0.1.3"
+    "@vtex/admin-ui-react" "^0.4.1"
+    "@vtex/phosphor-icons" "^0.2.0"
     csstype "^3.0.5"
     deepmerge "^4.2.2"
     downshift "^6.0.6"
@@ -376,6 +369,13 @@
     tiny-invariant "^1.1.0"
     tiny-warning "^1.0.3"
     use-debounce "^7.0.0"
+
+"@vtex/phosphor-icons@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@vtex/phosphor-icons/-/phosphor-icons-0.2.0.tgz#a2a35352911b221feda45ae0aef169334c99e1ab"
+  integrity sha512-BO5xF0dX27OeLKOqq1j+mv6THiskDtap9pWQfMRG9BvgPr/4Hxx2k6d2fWUvIzGU4ZJ9OLRNDcrhlt3IU657Cw==
+  dependencies:
+    tiny-invariant "^1.1.0"
 
 "@vtex/tsconfig@^0.4.4":
   version "0.4.4"
@@ -885,6 +885,10 @@ use-debounce@^7.0.0:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/use-debounce/-/use-debounce-7.0.1.tgz#380e6191cc13ad29f8e2149a12b5c37cc2891190"
   integrity sha512-fOrzIw2wstbAJuv8PC9Vg4XgwyTLEOdq4y/Z3IhVl8DAE4svRcgyEUvrEXu+BMNgMoc3YND6qLT61kkgEKXh7Q==
+
+"vtex.render-runtime@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.3/public/@types/vtex.render-runtime":
+  version "8.132.3"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.3/public/@types/vtex.render-runtime#c7dd142e384f38bd7a7c841543b73e9349fadc93"
 
 yaml@^1.7.2:
   version "1.10.2"

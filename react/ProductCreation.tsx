@@ -93,7 +93,7 @@ function ProductCreation() {
               modal.hide()
 
               showToast({
-                type: 'success',
+                tone: 'positive',
                 message: formatMessage(messages.confirmMessage),
                 dismissible: true,
               })

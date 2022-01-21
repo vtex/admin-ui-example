@@ -8,10 +8,11 @@
     "@vtex/tsconfig": "^0.4.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "typescript": "3.9.7"
+    "typescript": "3.9.7",
+    "vtex.render-runtime": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.3/public/@types/vtex.render-runtime"
   },
   "dependencies": {
-    "@vtex/admin-ui": "^0.114.3",
+    "@vtex/admin-ui": "^0.117.0",
     "faker": "^5.5.3",
     "react-intl": "^5.21.0"
   }

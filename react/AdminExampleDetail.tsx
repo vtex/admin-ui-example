@@ -67,11 +67,7 @@ function AdminExampleDetail({ params: { id } }: Props) {
   return (
     <ThemeProvider>
       <ToastProvider>
-        <Flex
-          direction="column"
-          justify="center"
-          style={{ backgroundColor: 'rgb(248, 249, 250)' }}
-        >
+        <Flex direction="column" justify="center" csx={{ bg: '$secondary' }}>
           <PageHeader
             onPopNavigation={() =>
               navigate({
@@ -92,13 +88,13 @@ function AdminExampleDetail({ params: { id } }: Props) {
                 width: '100%',
               }}
             >
-              <Card style={cardStyles}>
-                <Flex style={propContainerStyles}>
+              <Card csx={cardStyles}>
+                <Flex csx={propContainerStyles}>
                   <Text>Name</Text>
                   <FlexSpacer />
                   <Text>TALK CADEIRA</Text>
                 </Flex>
-                <Flex style={propContainerStyles}>
+                <Flex csx={propContainerStyles}>
                   <Text>Reference Code</Text>
                   <FlexSpacer />
                   <Text>1397</Text>
@@ -115,38 +111,38 @@ function AdminExampleDetail({ params: { id } }: Props) {
                 </Flex>
               </Card>
 
-              <Card style={cardStyles}>
-                <Flex style={propContainerStyles}>
+              <Card csx={cardStyles}>
+                <Flex csx={propContainerStyles}>
                   <Text>Shipment weight*:</Text>
                   <FlexSpacer />
                   <Text>5,62</Text>
                 </Flex>
-                <Flex style={propContainerStyles}>
+                <Flex csx={propContainerStyles}>
                   <Text>Shipment height*:</Text>
                   <FlexSpacer />
                   <Text>81,00</Text>
                 </Flex>
-                <Flex style={propContainerStyles}>
+                <Flex csx={propContainerStyles}>
                   <Text>Shipment width*:</Text>
                   <FlexSpacer />
                   <Text>52,00</Text>
                 </Flex>
-                <Flex style={propContainerStyles}>
+                <Flex csx={propContainerStyles}>
                   <Text>Shipment length*:</Text>
                   <FlexSpacer />
                   <Text>50,00</Text>
                 </Flex>
-                <Flex style={propContainerStyles}>
+                <Flex csx={propContainerStyles}>
                   <Text>Real weight: </Text>
                   <FlexSpacer />
                   <Text>5,62</Text>
                 </Flex>
-                <Flex style={propContainerStyles}>
+                <Flex csx={propContainerStyles}>
                   <Text>Real height: </Text>
                   <FlexSpacer />
                   <Text>81,00</Text>
                 </Flex>
-                <Flex style={propContainerStyles}>
+                <Flex csx={propContainerStyles}>
                   <Text>Real width: </Text>
                   <FlexSpacer />
                   <Text>52,00</Text>
@@ -158,8 +154,8 @@ function AdminExampleDetail({ params: { id } }: Props) {
                 </Flex>
               </Card>
 
-              <Card style={cardStyles}>
-                <Flex style={propContainerStyles}>
+              <Card csx={cardStyles}>
+                <Flex csx={propContainerStyles}>
                   <Text>Commercial Condition Code:</Text>
                   <FlexSpacer />
                   <Dropdown
@@ -170,7 +166,7 @@ function AdminExampleDetail({ params: { id } }: Props) {
                   />
                 </Flex>
 
-                <Flex style={propContainerStyles}>
+                <Flex csx={propContainerStyles}>
                   <Text>Measurement Unit</Text>
                   <FlexSpacer />
                   <Dropdown
@@ -181,7 +177,7 @@ function AdminExampleDetail({ params: { id } }: Props) {
                   />
                 </Flex>
 
-                <Flex style={propContainerStyles}>
+                <Flex csx={propContainerStyles}>
                   <Label csx={{ width: '100%' }}>
                     <Flex>
                       <span>Activate SKU if possible?</span>
@@ -191,7 +187,7 @@ function AdminExampleDetail({ params: { id } }: Props) {
                   </Label>
                 </Flex>
 
-                <Flex style={propContainerStyles}>
+                <Flex csx={propContainerStyles}>
                   <Label csx={{ width: '100%' }}>
                     <Flex>
                       <span>SKU Activated?</span>
