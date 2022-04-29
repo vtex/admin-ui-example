@@ -161,7 +161,7 @@ function AdminExample() {
               >
                 <MenuButton
                   display="actions"
-                  variant="adaptative-dark"
+                  variant="secondary"
                   aria-label={formatMessage(messages.itemActionAriaLabel)}
                 />
                 <MenuList>
