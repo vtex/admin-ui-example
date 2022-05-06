@@ -21,4 +21,4 @@ Live demo on [adminuiexample--teamadmin.myvtex.com/admin/example](https://adminu
 
 Feel free to let us know in the [issues](https://github.com/vtex/admin-ui-example/issues) if you would like to see a specific feature.
 
-<!-- WHO'S USING ADMIN UI WORKFLOW TEST ATTEMPT#41 -->
+<!-- WHO'S USING ADMIN UI WORKFLOW TEST ATTEMPT#42 -->
