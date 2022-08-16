@@ -51,7 +51,8 @@ function ProductCreation() {
   return (
     <>
       <ModalDisclosure state={modal}>
-        <PageHeaderButton>
+        <PageHeaderButton css={{}}>
+          {/* empty css here is to prevent builder hub's react builder from crashing */}
           <FormattedMessage {...messages.modalTrigger} />
         </PageHeaderButton>
       </ModalDisclosure>

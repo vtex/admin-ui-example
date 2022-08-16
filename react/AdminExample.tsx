@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useRuntime } from 'vtex.render-runtime'
-import { defineMessages, FormattedMessage, useIntl } from 'react-intl'
+import { defineMessages, FormattedMessage } from 'react-intl'
 import {
   createSystem,
   DataView,
@@ -8,14 +8,10 @@ import {
   Flex,
   FlexSpacer,
   IconArrowDown,
-  Menu,
-  MenuButton,
-  MenuItem,
   Pagination,
   Search,
   ToastProvider,
   useDataViewState,
-  useMenuState,
   usePaginationState,
   Page,
   PageHeader,
@@ -70,8 +66,6 @@ const items = Array(NUMBER_OF_ITEMS)
 
 function AdminExample() {
   const { navigate } = useRuntime()
-  const { formatMessage } = useIntl()
-  const state = useMenuState()
   const view = useDataViewState()
   const { getInputProps, debouncedValue } = useSearchState({})
   const pagination = usePaginationState({
@@ -134,43 +128,6 @@ function AdminExample() {
           type: 'currency',
           locale: 'en-US',
           currency: 'USD',
-        },
-      },
-      {
-        id: 'menu',
-        resolver: {
-          type: 'root',
-          render: function Render(_props) {
-            const menuState = useMenuState()
-
-            return (
-              <>
-                <MenuButton
-                  variant="secondary"
-                  aria-label={formatMessage(messages.itemActionAriaLabel)}
-                  state={menuState}
-                  labelHidden
-                />
-                <Menu
-                  state={state}
-                  onClick={(
-                    event: React.MouseEvent<HTMLDivElement, MouseEvent>
-                  ) => event.stopPropagation()}
-                >
-                  <MenuItem
-                    onClick={() => state.toggle()}
-                    label={<FormattedMessage {...messages.itemAction} />}
-                  />
-                  <MenuItem
-                    onClick={() => state.toggle()}
-                    label={
-                      <FormattedMessage {...messages.itemDangerousAction} />
-                    }
-                  />
-                </Menu>
-              </>
-            )
-          },
         },
       },
     ],
