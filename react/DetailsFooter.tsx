@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { useRuntime } from 'vtex.render-runtime'
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl'
 import { Button, Flex, useToast } from '@vtex/admin-ui'
@@ -12,16 +12,8 @@ const messages = defineMessages({
 })
 
 function DetailsFooter() {
-  // ------
-  // Pull the navigation function from the runtime
   const { navigate } = useRuntime()
-
-  // ------
-  // React Intl to retrieve direct strings
   const { formatMessage } = useIntl()
-
-  // ------
-  // Toast related config
   const showToast = useToast()
 
   return (

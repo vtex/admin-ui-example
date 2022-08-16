@@ -1,9 +1,8 @@
-import React from 'react'
+import * as React from 'react'
 import { useRuntime } from 'vtex.render-runtime'
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl'
 import {
   createSystem,
-  DataGrid,
   DataView,
   DataViewControls,
   Flex,
@@ -12,29 +11,30 @@ import {
   Menu,
   MenuButton,
   MenuItem,
-  MenuList,
-  PageActions,
-  PageHeader,
-  PageTitle,
   Pagination,
   Search,
   ToastProvider,
-  useDataGridState,
   useDataViewState,
   useMenuState,
   usePaginationState,
+  Page,
+  PageHeader,
+  PageHeaderTop,
+  PageHeaderActions,
+  PageHeaderTitle,
+  PageContent,
+  useTableState,
+  Table,
   useSearchState,
 } from '@vtex/admin-ui'
-import faker from 'faker'
+import * as faker from 'faker'
 
 import ProductCreation from './ProductCreation'
 
 const NUMBER_OF_ITEMS = 45
 const ITEMS_PER_PAGE = 10
 
-const [ThemeProvider] = createSystem({
-  key: 'admin-ui-example',
-})
+const [ThemeProvider] = createSystem()
 
 const messages = defineMessages({
   title: {
@@ -54,8 +54,6 @@ const messages = defineMessages({
   },
 })
 
-// ------
-// Create fake data into an array with Faker
 const items = Array(NUMBER_OF_ITEMS)
   .fill(NUMBER_OF_ITEMS)
   .map(() => {
@@ -71,18 +69,11 @@ const items = Array(NUMBER_OF_ITEMS)
   })
 
 function AdminExample() {
-  // ------
-  // Pull the navigation function from the runtime
   const { navigate } = useRuntime()
-
-  // ------
-  // React Intl to retrieve direct strings
   const { formatMessage } = useIntl()
-
-  // ------
-  // Datagrid config
+  const state = useMenuState()
   const view = useDataViewState()
-  const search = useSearchState()
+  const { getInputProps, debouncedValue } = useSearchState({})
   const pagination = usePaginationState({
     pageSize: ITEMS_PER_PAGE,
     total: NUMBER_OF_ITEMS,
@@ -90,18 +81,18 @@ function AdminExample() {
 
   const searchedItems = React.useMemo(() => {
     return items.filter((item) => {
-      const searchLowerCase = search.debouncedValue.toLocaleLowerCase()
+      const searchLowerCase = debouncedValue.toLocaleLowerCase()
 
       return item.productName.toLowerCase().includes(searchLowerCase)
     })
-  }, [search])
+  }, [debouncedValue])
 
   React.useEffect(() => {
     pagination.paginate({ type: 'setTotal', total: searchedItems.length })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchedItems.length])
 
-  const grid = useDataGridState({
+  const table = useTableState({
     view,
     columns: [
       {
@@ -150,29 +141,34 @@ function AdminExample() {
         resolver: {
           type: 'root',
           render: function Render(_props) {
-            const state = useMenuState({})
+            const menuState = useMenuState()
 
             return (
-              <Menu
-                state={state}
-                onClick={(
-                  event: React.MouseEvent<HTMLDivElement, MouseEvent>
-                ) => event.stopPropagation()}
-              >
+              <>
                 <MenuButton
-                  display="actions"
                   variant="secondary"
                   aria-label={formatMessage(messages.itemActionAriaLabel)}
+                  state={menuState}
+                  labelHidden
                 />
-                <MenuList>
-                  <MenuItem onClick={() => state.toggle()}>
-                    <FormattedMessage {...messages.itemAction} />
-                  </MenuItem>
-                  <MenuItem tone="critical" onClick={() => state.toggle()}>
-                    <FormattedMessage {...messages.itemDangerousAction} />
-                  </MenuItem>
-                </MenuList>
-              </Menu>
+                <Menu
+                  state={state}
+                  onClick={(
+                    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+                  ) => event.stopPropagation()}
+                >
+                  <MenuItem
+                    onClick={() => state.toggle()}
+                    label={<FormattedMessage {...messages.itemAction} />}
+                  />
+                  <MenuItem
+                    onClick={() => state.toggle()}
+                    label={
+                      <FormattedMessage {...messages.itemDangerousAction} />
+                    }
+                  />
+                </Menu>
+              </>
             )
           },
         },
@@ -191,32 +187,33 @@ function AdminExample() {
   return (
     <ThemeProvider>
       <ToastProvider>
-        <PageHeader>
-          <PageTitle>
-            <FormattedMessage {...messages.title} />
-          </PageTitle>
-
-          <PageActions>
-            <ProductCreation />
-          </PageActions>
-        </PageHeader>
-
-        <div style={{ padding: '0 4rem' }}>
-          <DataView state={view}>
-            <DataViewControls>
-              <Search id="search" placeholder="Search" state={search} />
-              <FlexSpacer />
-              <Pagination
-                state={pagination}
-                preposition="of"
-                subject="results"
-                prevLabel="Previous"
-                nextLabel="Next"
-              />
-            </DataViewControls>
-            <DataGrid state={grid} />
-          </DataView>
-        </div>
+        <Page>
+          <PageHeader>
+            <PageHeaderTop>
+              <PageHeaderTitle>
+                <FormattedMessage {...messages.title} />
+              </PageHeaderTitle>
+              <PageHeaderActions>
+                <ProductCreation />
+              </PageHeaderActions>
+            </PageHeaderTop>
+          </PageHeader>
+          <PageContent>
+            <DataView state={view}>
+              <DataViewControls>
+                <Search {...getInputProps()} />
+                <FlexSpacer />
+                <Pagination
+                  state={pagination}
+                  subject="results"
+                  prevLabel="Previous"
+                  nextLabel="Next"
+                />
+              </DataViewControls>
+              <Table state={table} />
+            </DataView>
+          </PageContent>
+        </Page>
       </ToastProvider>
     </ThemeProvider>
   )
