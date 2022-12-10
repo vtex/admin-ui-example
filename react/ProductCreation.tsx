@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl'
 import {
   Button,
@@ -8,8 +8,9 @@ import {
   ModalContent,
   ModalFooter,
   useModalState,
-  Input,
+  TextInput,
   useToast,
+  PageHeaderButton,
 } from '@vtex/admin-ui'
 
 const messages = defineMessages({
@@ -40,48 +41,47 @@ const messages = defineMessages({
 })
 
 function ProductCreation() {
-  // ------
-  // React Intl to retrieve direct strings
   const { formatMessage } = useIntl()
-
-  // ------
-  // Modal related config
   const modal = useModalState()
   const [productName, setProductName] = React.useState('')
   const [adjective, setAdjective] = React.useState('')
   const [price, setPrice] = React.useState('')
-
-  // ------
-  // Toast related config
   const showToast = useToast()
 
   return (
     <>
       <ModalDisclosure state={modal}>
-        <Button>
+        <PageHeaderButton css={{}}>
+          {/* empty css here is to prevent builder hub's react builder from crashing */}
           <FormattedMessage {...messages.modalTrigger} />
-        </Button>
+        </PageHeaderButton>
       </ModalDisclosure>
       <Modal aria-label="Product creation modal" state={modal}>
         <ModalHeader title={formatMessage(messages.modalHeader)} />
         <ModalContent>
-          <Input
+          <TextInput
             id="productName"
             label={formatMessage(messages.productName)}
             value={productName}
-            onChange={(e) => setProductName(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setProductName(e.target.value)
+            }
           />
-          <Input
+          <TextInput
             id="adjective"
             label={formatMessage(messages.adjective)}
             value={adjective}
-            onChange={(e) => setAdjective(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setAdjective(e.target.value)
+            }
           />
-          <Input
+          <TextInput
             id="price"
             label={formatMessage(messages.price)}
             value={price}
-            onChange={(e) => setPrice(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setPrice(e.target.value)
+            }
           />
         </ModalContent>
         <ModalFooter>
