@@ -1,0 +1,22 @@
+{
+  "admin-example.navigation.label-group": "Admin-UI Example",
+  "admin-example.navigation.label-main": "Main Page",
+  "admin/admin-example.title": "An Example App Powered by Admin-UI",
+  "admin/admin-example.itemId": "Item #{refId}",
+  "admin/admin-example.item.actions.ariaLabel": "Table row actions",
+  "admin/admin-example.item.action": "Perform action",
+  "admin/admin-example.item.dangerousAction": "Perform dangerous action",
+  "admin/admin-example.details.title": "Product Details: #{id}",
+  "admin/admin-example.details.params": "Parameters:",
+  "admin/admin-example.details.return": "Back",
+  "admin/admin-example.details.save": "Save",
+  "admin/admin-example.details.confirmMessage": "Your product was successfully updated!",
+  "admin/admin-example.create.modalTrigger": "Create",
+  "admin/admin-example.create.modalHeader": "Add a Product",
+  "admin/admin-example.create.productName": "Product name",
+  "admin/admin-example.create.adjective": "Adjective",
+  "admin/admin-example.create.price": "Price",
+  "admin/admin-example.create.cancel": "Cancel",
+  "admin/admin-example.create.confirm": "Confirm",
+  "admin/admin-example.create.confirmMessage": "Your product was successfully sent!"
+}
