@@ -33,10 +33,6 @@ import ProductCreation from './ProductCreation'
 const NUMBER_OF_ITEMS = 45
 const ITEMS_PER_PAGE = 10
 
-const {
-  culture: { locale },
-} = useRuntime()
-
 const [ThemeProvider] = createSystem({
   key: 'admin-ui-example',
 })
@@ -79,7 +75,9 @@ function AdminExample() {
   // ------
   // Pull the navigation function from the runtime
   const { navigate } = useRuntime()
-
+  const {
+    culture: { locale },
+  } = useRuntime()
   // ------
   // React Intl to retrieve direct strings
   const { formatMessage } = useIntl()
