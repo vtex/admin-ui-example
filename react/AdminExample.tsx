@@ -2,6 +2,7 @@ import React from 'react'
 import { useRuntime } from 'vtex.render-runtime'
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl'
 import {
+  experimental_I18nProvider as I18nProvider,
   createSystem,
   DataGrid,
   DataView,
@@ -31,6 +32,10 @@ import ProductCreation from './ProductCreation'
 
 const NUMBER_OF_ITEMS = 45
 const ITEMS_PER_PAGE = 10
+
+const {
+  culture: { locale },
+} = useRuntime()
 
 const [ThemeProvider] = createSystem({
   key: 'admin-ui-example',
@@ -153,26 +158,28 @@ function AdminExample() {
             const state = useMenuState({})
 
             return (
-              <Menu
-                state={state}
-                onClick={(
-                  event: React.MouseEvent<HTMLDivElement, MouseEvent>
-                ) => event.stopPropagation()}
-              >
-                <MenuButton
-                  display="actions"
-                  variant="secondary"
-                  aria-label={formatMessage(messages.itemActionAriaLabel)}
-                />
-                <MenuList>
-                  <MenuItem onClick={() => state.toggle()}>
-                    <FormattedMessage {...messages.itemAction} />
-                  </MenuItem>
-                  <MenuItem tone="critical" onClick={() => state.toggle()}>
-                    <FormattedMessage {...messages.itemDangerousAction} />
-                  </MenuItem>
-                </MenuList>
-              </Menu>
+              <I18nProvider locale={locale}>
+                <Menu
+                  state={state}
+                  onClick={(
+                    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+                  ) => event.stopPropagation()}
+                >
+                  <MenuButton
+                    display="actions"
+                    variant="secondary"
+                    aria-label={formatMessage(messages.itemActionAriaLabel)}
+                  />
+                  <MenuList>
+                    <MenuItem onClick={() => state.toggle()}>
+                      <FormattedMessage {...messages.itemAction} />
+                    </MenuItem>
+                    <MenuItem tone="critical" onClick={() => state.toggle()}>
+                      <FormattedMessage {...messages.itemDangerousAction} />
+                    </MenuItem>
+                  </MenuList>
+                </Menu>
+              </I18nProvider>
             )
           },
         },
@@ -189,36 +196,38 @@ function AdminExample() {
   })
 
   return (
-    <ThemeProvider>
-      <ToastProvider>
-        <PageHeader>
-          <PageTitle>
-            <FormattedMessage {...messages.title} />
-          </PageTitle>
+    <I18nProvider locale={locale}>
+      <ThemeProvider>
+        <ToastProvider>
+          <PageHeader>
+            <PageTitle>
+              <FormattedMessage {...messages.title} />
+            </PageTitle>
 
-          <PageActions>
-            <ProductCreation />
-          </PageActions>
-        </PageHeader>
+            <PageActions>
+              <ProductCreation />
+            </PageActions>
+          </PageHeader>
 
-        <div style={{ padding: '0 4rem' }}>
-          <DataView state={view}>
-            <DataViewControls>
-              <Search id="search" placeholder="Search" state={search} />
-              <FlexSpacer />
-              <Pagination
-                state={pagination}
-                preposition="of"
-                subject="results"
-                prevLabel="Previous"
-                nextLabel="Next"
-              />
-            </DataViewControls>
-            <DataGrid state={grid} />
-          </DataView>
-        </div>
-      </ToastProvider>
-    </ThemeProvider>
+          <div style={{ padding: '0 4rem' }}>
+            <DataView state={view}>
+              <DataViewControls>
+                <Search id="search" placeholder="Search" state={search} />
+                <FlexSpacer />
+                <Pagination
+                  state={pagination}
+                  preposition="of"
+                  subject="results"
+                  prevLabel="Previous"
+                  nextLabel="Next"
+                />
+              </DataViewControls>
+              <DataGrid state={grid} />
+            </DataView>
+          </div>
+        </ToastProvider>
+      </ThemeProvider>
+    </I18nProvider>
   )
 }
 
