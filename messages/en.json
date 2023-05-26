@@ -1,6 +1,6 @@
 {
-  "admin-example.navigation.label-group": "Admin-UI Example",
-  "admin-example.navigation.label-main": "Main Page",
+  "admin/admin-example.navigation.label-group": "Admin-UI Example",
+  "admin/admin-example.navigation.label-main": "Main Page",
   "admin/admin-example.title": "An Example App Powered by Admin-UI",
   "admin/admin-example.itemId": "Item #{refId}",
   "admin/admin-example.item.actions.ariaLabel": "Table row actions",
